@@ -12,6 +12,7 @@
 
 # compiled code (team members can compile w/ Webpack)
 ./js/app.js
+./build/bundle.js
 
 # large JS modules/libraries (team members can install w/ "npm install")
 node_modules
