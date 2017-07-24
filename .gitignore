@@ -1,0 +1,70 @@
+# =============================================
+# Git ignores files that are:
+# =============================================
+
+# 1. irrelevant
+# 2. large
+# 3. changing very often (to avoid cluterring "git status")
+
+# =============================================
+# Git ignores the following files:
+# =============================================
+
+# compiled code (team members can compile w/ Webpack)
+./js/app.js
+
+# large JS modules/libraries (team members can install w/ "npm install")
+node_modules
+
+# large media assets (ex. photos, videos, audio)
+assets/
+
+# log files (these files change very often so they would clutter "git status")
+log/*.log
+log/*log.[0-9]
+log/archive/
+
+# database files (same reason as above)
+# *.sql
+
+# Git does its own file compression
+*.zip
+*.7z
+*.gz
+*.tar
+
+# Mac meta data files / folders
+*.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows meta data files / folders
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# folder used by Git for tracking changes in local working directory
+.git
