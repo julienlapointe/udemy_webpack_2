@@ -22,7 +22,21 @@ const config = {
 		// save bundle.js inside a folder called "build"
 		path: path.resolve(__dirname, "build"),
 		filename: "bundle.js"
-	} 
+	},
+	// learning #6
+	// loaders (now called "rules" in Webpack 2)
+	module: {
+		rules: [
+			{
+				use: "babel-loader",
+				// learning #7
+				// regular expression that Webpack applies to every file in our project
+				// Babel gets transpiles files that match the regular expression
+				// /\.js$/ = file has a ".js" extension
+				test: /\.js$/
+			}
+		]
+	}
 };
 
 module.exports = config;

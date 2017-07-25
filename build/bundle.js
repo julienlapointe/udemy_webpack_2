@@ -68,31 +68,46 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 // learning #2
 // each JS module has its own / separate scope
 // therefore, index.js cannot access the sum() function below... unless we "export" it
 
 // function that adds two numbers
-const sum = (a, b) => a + b;
+var sum = function sum(a, b) {
+  return a + b;
+};
 
 // make the sum() function public / available for other JS modules to use
-module.exports = sum;
+exports.default = sum;
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-// learning #1
+"use strict";
+
+
+var _sum = __webpack_require__(0);
+
+var _sum2 = _interopRequireDefault(_sum);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// add numbers together using the imported sum() function and print the sum "total" to the console
+var total = (0, _sum2.default)(10, 5); // learning #1
 // depends on sum.js ot execute
 // sum.js must be loaded before index.js can be executed
 // index.js must import / require sum.js
 // './sum' represents a relative file path / reference (relative to the location of index.js)
-const sum = __webpack_require__(0);
 
-// add numbers together using the imported sum() function and print the sum "total" to the console
-const total = sum(10, 5);
 console.log(total);
 
 /***/ }

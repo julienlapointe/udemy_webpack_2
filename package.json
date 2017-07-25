@@ -1,17 +1,20 @@
 {
-	"name": "this is a comment for package.json files: commenting with // or /*...*/ is not possible, therefore you can use '//': ['comment goes here'], OR you can duplicate a property / key and place your comment in the value of the first occurrence of that property / key because NPM only reads the last property / key when duplicates exist.",
-	"name": "js_modules",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"build": "this is a comment for the line below: runs webpack on project files in 'src' folder and outputs bundle.js to 'build' folder",
-		"//": ["this is a comment for the line below: runs webpack on project files in 'src' folder and outputs bundle.js to 'build' folder"],
-		"build": "webpack"
-	},
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"webpack": "^2.2.0-rc.0"
-	}
+  "name": "js_modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "//": [
+      "this is a comment for the line below: runs webpack on project files in 'src' folder and outputs bundle.js to 'build' folder"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "webpack": "^2.2.0-rc.0"
+  }
 }
