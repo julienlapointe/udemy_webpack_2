@@ -8,7 +8,7 @@
 import sum from "./sum.js";
 // no executable code / functions in image_viewer.js, therefore no need to assign an alias (ex. "sum" in the above line)
 // image_viewer.js simply puts an <img> element on the DOM
-import "./image_viewer.js";
+// import "./image_viewer.js";
 
 // add numbers together using the imported sum() function and print the sum "total" to the console
 const total = sum(10, 5);
@@ -18,6 +18,19 @@ console.log(total);
 const button = document.createElement("button");
 // add text value for button
 button.innerText = "Click me!";
+
+// button.onclick = () => {
+	// request image_viewer.js module from server
+	// asynchronous call
+	// returns a promise with the "module"
+	// upon receiving the "module", run function in .then()
+	// 
+	// System.import("./image_viewer_v2.js").then(module => {
+	// import("./image_viewer_v2.js").then(module => {
+		// console.log(module);
+	// });
+// }
+
 // function to run on "click" event
 button.onclick = () => {
 	// request image_viewer.js module from server
@@ -28,7 +41,11 @@ button.onclick = () => {
 	// System.import("./image_viewer_v2.js").then(module => {
 	import("./image_viewer_v2.js").then(module => {
 		console.log(module);
+		// return module.default();
+	}).catch(err => {
+		console.log('chunk loading...', err);
 	});
-}
+};
+
 // put <button> element on the DOM
 document.body.appendChild(button);
