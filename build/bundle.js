@@ -220,10 +220,8 @@ button.onclick = function () {
 			resolve(__webpack_require__(1));
 		}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 	}).then(function (module) {
-		console.log(module);
-		// return module.default();
-	}).catch(function (err) {
-		console.log('chunk loading...', err);
+		// console.log(module);
+		module.default();
 	});
 };
 

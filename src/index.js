@@ -40,10 +40,8 @@ button.onclick = () => {
 	// 
 	// System.import("./image_viewer_v2.js").then(module => {
 	import("./image_viewer_v2.js").then(module => {
-		console.log(module);
-		// return module.default();
-	}).catch(err => {
-		console.log('chunk loading...', err);
+		// console.log(module);
+		module.default();
 	});
 };
 
