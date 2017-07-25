@@ -77,4 +77,5 @@ const config = {
 	]
 };
 
+// cannot use ES2015 "export default config;" here... must use CommonJS because Webpack runs on NodeJS?
 module.exports = config;

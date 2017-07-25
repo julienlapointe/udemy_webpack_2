@@ -13,3 +13,22 @@ import "./image_viewer.js";
 // add numbers together using the imported sum() function and print the sum "total" to the console
 const total = sum(10, 5);
 console.log(total);
+
+// create a <button> element
+const button = document.createElement("button");
+// add text value for button
+button.innerText = "Click me!";
+// function to run on "click" event
+button.onclick = () => {
+	// request image_viewer.js module from server
+	// asynchronous call
+	// returns a promise with the "module"
+	// upon receiving the "module", run function in .then()
+	// 
+	// System.import("./image_viewer_v2.js").then(module => {
+	import("./image_viewer_v2.js").then(module => {
+		console.log(module);
+	});
+}
+// put <button> element on the DOM
+document.body.appendChild(button);
