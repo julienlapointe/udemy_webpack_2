@@ -6,6 +6,7 @@
 // add "path" module
 // generates the absolute path to where we want to output bundle.js (see below)
 const path = require("path");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = {
 	// required property #1
@@ -39,12 +40,27 @@ const config = {
 				// learning #8
 				// loaders are applied from <-- RIGHT TO LEFT <--
 				// order is important: css-loader must be on right / must load first
-				use: ["style-loader", "css-loader"],
+				// css-loader opens / reads the CSS files
+				// style-loader puts the CSS styles in a <style> tag inside the <head> tag at the top of HTML documents... 
+				// use: ["style-loader", "css-loader"],
+				// ---
+				// ^ this breaks some CSS conventions so we use the ExtractTextPlugin to save the CSS in a separate file 
+				// learning #9
+				// Note: "use" (new) and "loader" (legacy) properties are the same
+				// learning #10
+				// plugins and loaders are *not* the same... output from loaders must go into bundle.js, but plugins can withhold output from bundle.js (which we need in order to put our CSS into a separate file)
+				loader: ExtractTextPlugin.extract({
+					loader: 'css-loader'
+				}),
 				// any files with .css extension will be sent to these loaders (listed in the line above) for pre-processing
 				test: /\.css$/
 			}
 		]
-	}
+	},
+	plugins: [
+		// any CSS from .css files caught by css-loader in the rule above will get compiled and outputted into a single styles.css file
+		new ExtractTextPlugin('styles.css')
+	]
 };
 
 module.exports = config;
