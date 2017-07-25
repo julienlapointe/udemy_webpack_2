@@ -63,11 +63,27 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// create an <img> element
+var image = document.createElement("img");
+// assigns a "src" attribute
+image.src = "http://lorempixel.com/400/400";
+// puts <img> element on the DOM
+document.body.appendChild(image);
+
+// Note: nothing gets exported because there are no functions to export... this code simply runs and an <img> element appears on the DOM
+
+/***/ },
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86,27 +102,35 @@ var sum = function sum(a, b) {
 };
 
 // make the sum() function public / available for other JS modules to use
+// ES2015 module export syntax
 exports.default = sum;
 
 /***/ },
-/* 1 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _sum = __webpack_require__(0);
+var _sum = __webpack_require__(1);
 
 var _sum2 = _interopRequireDefault(_sum);
+
+__webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // add numbers together using the imported sum() function and print the sum "total" to the console
-var total = (0, _sum2.default)(10, 5); // learning #1
-// depends on sum.js ot execute
+// learning #1
+// depends on sum.js to execute
 // sum.js must be loaded before index.js can be executed
 // index.js must import / require sum.js
+// every JS file / module needs to be imported *at least once somewhere* in order for it to appear in the bundle.js
 // './sum' represents a relative file path / reference (relative to the location of index.js)
+// ES2015 module import syntax
+var total = (0, _sum2.default)(10, 5);
+// no executable code / functions in image_viewer.js, therefore no need to assign an alias (ex. "sum" in the above line)
+// image_viewer.js simply puts an <img> element on the DOM
 
 console.log(total);
 
