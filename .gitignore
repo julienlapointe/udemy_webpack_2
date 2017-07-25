@@ -18,7 +18,7 @@
 node_modules
 
 # large media assets (ex. photos, videos, audio)
-assets/
+# assets/
 
 # log files (these files change very often so they would clutter "git status")
 log/*.log

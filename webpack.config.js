@@ -22,21 +22,25 @@ const config = {
 		// "__dirname" is a constant in NodeJS that refers to the current working directory
 		// save bundle.js inside a folder called "build"
 		path: path.resolve(__dirname, "build"),
-		filename: "bundle.js"
+		filename: "bundle.js",
+		// "publicPath" is used by any loader that outputs a file (ex. url-loader for large images)
+		publicPath: "build/"
 	},
 	// learning #6
 	// loaders (now called "rules" in Webpack 2)
 	module: {
 		rules: [
 			{
-				use: "babel-loader",
 				// learning #7
 				// regular expression that Webpack applies to every file in our project
 				// Babel gets transpiles files that match the regular expression
 				// /\.js$/ = file has a ".js" extension
-				test: /\.js$/
+				test: /\.js$/,
+				use: "babel-loader"
 			},
 			{
+				// any files with .css extension will be sent to these loaders (listed in the line below) for pre-processing
+				test: /\.css$/,
 				// learning #8
 				// loaders are applied from <-- RIGHT TO LEFT <--
 				// order is important: css-loader must be on right / must load first
@@ -51,10 +55,20 @@ const config = {
 				// plugins and loaders are *not* the same... output from loaders must go into bundle.js, but plugins can withhold output from bundle.js (which we need in order to put our CSS into a separate file)
 				loader: ExtractTextPlugin.extract({
 					loader: 'css-loader'
-				}),
-				// any files with .css extension will be sent to these loaders (listed in the line above) for pre-processing
-				test: /\.css$/
+				})
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/,
+				use: [
+					{
+						loader: "url-loader",
+						// images smaller than 40,000 bytes (40kb) get saved inline in bundle.js, whereas larger images get saved in a separate file
+						options: { limit: 40000 }
+					},
+					"image-webpack-loader"
+				]
 			}
+
 		]
 	},
 	plugins: [
