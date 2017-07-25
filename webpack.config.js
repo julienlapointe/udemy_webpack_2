@@ -34,6 +34,14 @@ const config = {
 				// Babel gets transpiles files that match the regular expression
 				// /\.js$/ = file has a ".js" extension
 				test: /\.js$/
+			},
+			{
+				// learning #8
+				// loaders are applied from <-- RIGHT TO LEFT <--
+				// order is important: css-loader must be on right / must load first
+				use: ["style-loader", "css-loader"],
+				// any files with .css extension will be sent to these loaders (listed in the line above) for pre-processing
+				test: /\.css$/
 			}
 		]
 	}
